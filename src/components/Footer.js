@@ -1,6 +1,6 @@
 
 import styled from "styled-components";
-import "../App.css";
+//import "../App.css";
 
 
 const Footer = () => {

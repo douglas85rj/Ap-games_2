@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Contato from './routes/Contato';
 import Home from './routes/Home';
+import { ThemeProvider } from "styled-components";
+import Theme from "./styles/Theme";
+
 //Router
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
@@ -33,7 +36,11 @@ children: [
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <ThemeProvider theme={Theme}>
     <RouterProvider router={router} />
+
+    </ThemeProvider>
+
   </React.StrictMode>
 );
 
