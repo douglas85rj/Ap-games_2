@@ -1,7 +1,7 @@
 import Form from '../Form'
 import {render, screen} from '@testing-library/react'
 
-describe ('Form component test and Form render', () => {
+describe ('Form component test and Form rendering', () => {
     test('renders without crashing', () => {
   
     

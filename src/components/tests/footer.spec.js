@@ -10,8 +10,8 @@ jest.mock("react-router", () => ({
 }));
 
 describe("FooterRender", () => {
-  //Testando a renderização do componente Footer, renderizando e verificando os textos (Home e Contato).
-  it("Teste render para o componente Footer", () => {
+ 
+  it("Footer component rendering and text router validation for Home and Contact", () => {
     render(
       <BrowserRouter>
         <Footer />
