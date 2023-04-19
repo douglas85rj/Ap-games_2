@@ -51,7 +51,7 @@ export default function Form() {
 
       {errors?.age?.type === "required" && <p>Digite a sua Idade</p>}
       {errors.age && <p>Você deve ter entre 18 e 99 anos</p>}
-      <input type="submit" />
+      <input type="submit" data-testid="form_button" />
       <FormStyle />
     </form>
   );

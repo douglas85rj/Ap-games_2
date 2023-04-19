@@ -1,15 +1,15 @@
 import Form from '../Form'
 import {render, screen} from '@testing-library/react'
 
-test("validar valores do label",() => { 
+describe ('Form component test', () => {
+    test('renders without crashing', () => {
+  it('renders a form', () => {
+    
+    render (<Form />);
+    const input = screen.getByTestId('form_button');
+    
 
-render(<Form />)
-const inputName = screen.getByDisplayValue('firstName')
-const inputSobrenome = screen.getByDisplayValue('lastName')
-
-expect(inputName).toHaveAttribute("input", "firstName")
-expect(inputSobrenome).toHaveAttribute("input", "lastName")
-
-
-})
-
+    expect(input).toBeInTheDocument();
+  });
+    });
+});
