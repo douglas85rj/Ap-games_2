@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import Contato from "./routes/Contato";
-import Contato2 from "./routes/Contato2";
 import Home from "./routes/Home";
 
 //Router
@@ -22,11 +21,7 @@ const router = createBrowserRouter([
       {
         path: "contato",
         element: <Contato />,
-      },
-      {
-path: "contato2",
-element: <Contato2 />,
-      },
+      },    
     ],
   },
 ]);

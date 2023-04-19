@@ -1,125 +1,64 @@
-
 import React from "react";
-import styled from "styled-components";
-
-
+import { useForm } from "react-hook-form";
+import  {FormStyle} from "../styles/FormStyle";
 
 export default function Form() {
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    alert(JSON.stringify(data));
+  }; // your form submit function which will invoke after successful validation
+
+  console.log(watch("example")); // you can watch individual input by pass the name of the input
+
   return (
-    
-    <div>
-      <form
-        className="conato"
-        method="post"
-        action="https://getform.io/f/97332049-19ab-4e2d-bd51-90d0accb9b30"
-      >
-        <div>
-          <Input
-            type="text"
-            name="fullname"
-            id="nome"
-            placeholder="Nome"
-            required
-            className="field"
-            minLength={2}
-            maxLength={36}
-          />
-        </div>
-        <div>
-          <Input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="email@seuemail.com"
-            required
-            className="field"
-          />
-        </div>
-        <div>
-          <Input
-            type="tel"
-            name="tel"
-            id="tel"
-            placeholder="Telefone (21) 99999-9999"
-            className="field"
-            pattern="\([0-9][0-9]\) 9?([0-9]{4}-[0-9]{4})"
-          />
-        </div>
-        <div>
-          <TextArea
-            name="mensagem"
-            id="mensagem"
-            required
-            rows={3}
-            className="field"
-            minLength={12}
-            maxLength={256}
-            placeholder="Seu texto com no mínimo 12 e no máximo 256 caracteres."
-          />
-        </div>
-        <Button>Enivar</Button>
-      </form>
-    </div>
-    
+     
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <label>Nome</label>
+      <input
+        {...register("firstName", {
+          required: true,
+          maxLength: 20,
+          pattern: /^[A-Za-z]+$/i,
+        })}
+      />
+      {errors?.firstName?.type === "required" && <p>Digite seu nome</p>}
+      {errors?.firstName?.type === "maxLength" && (
+        <p>O primeiro nome não pode exceder 20 caracteres</p>
+      )}
+      {errors?.firstName?.type === "pattern" && <p>Somente letras</p>}
+
+
+      <label>Sobrenome</label>      
+      <input {...register("lastName",{ 
+        required: true,  
+        pattern: /^[A-Za-z]+$/i })} />
+
+      {errors?.lastName?.type === "required" && <p>Digite seu sobrenome</p>}
+      {errors?.lastName?.type === "pattern" && <p>Somente letras</p>}
+
+
+      <label>Idade</label>
+      <input {...register("age",{
+         required: true , 
+         min: 18, max: 99 })} />
+
+      {errors?.age?.type === "required" && <p>Digite a sua Idade</p>}
+      {errors.age && <p>Você deve ter entre 18 e 99 anos</p>}
+      <input type="submit" />
+      <FormStyle />
+    </form>
   );
 }
 
-const Input = styled.input.attrs((props) => ({
-  // we can define static props
-  type: "text",
-
-  // or we can define dynamic ones
-  size: props.size || "1em",
-}))`
-  width: 40%;  
-  color: palevioletred;
-  font-size: 1em;
-  border: 2px solid palevioletred;
-  border-radius: 3px;
-  padding: 10px 20px;
-  margin: auto;
-  margin-bottom: 6px;
-  margin-top: 40px;
-  
-  display:inline;  
-  display:block;
 
 
-`;
 
-const TextArea = styled.input.attrs((props) => ({
-  type: "text",
 
-  size: props.size || "1em",
-}))`
-  width: 40%;
-  height: 150px;
-  color: palevioletred;
-  font-size: 1em;
-  border: 2px solid palevioletred;
-  border-radius: 3px;
-  margin: auto;
-  display:inline;  
- display:block;
- margin-top: 20px;
 
-  
-`;
-
-const Button = styled.button`
-  /* Adapt the colors based on primary prop */
-  background: ${(props) => (props.primary ? "palevioletred" : "white")};
-  color: ${(props) => (props.primary ? "white" : "palevioletred")};
-
-  width: 40%;
-  font-size: 1em;
-  margin: auto;
-  padding: 0.25em 1em;
-  border: 2px solid palevioletred;
-  border-radius: 3px;
-  cursor: pointer;
-  display:block;
-  margin-top:20px;
-  margin-bottom: 90px;
-
-`;
