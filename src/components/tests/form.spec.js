@@ -1,9 +1,9 @@
 import Form from '../Form'
 import {render, screen} from '@testing-library/react'
 
-describe ('Form component test', () => {
+describe ('Form component test and Form render', () => {
     test('renders without crashing', () => {
-  it('renders a form', () => {
+  
     
     render (<Form />);
     const input = screen.getByTestId('form_button');
@@ -12,4 +12,4 @@ describe ('Form component test', () => {
     expect(input).toBeInTheDocument();
   });
     });
-});
+
