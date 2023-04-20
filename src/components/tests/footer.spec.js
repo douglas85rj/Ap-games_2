@@ -11,7 +11,7 @@ jest.mock("react-router", () => ({
 
 describe("FooterRender", () => {
  
-  it("Footer component rendering and text router validation for Home and Contact", () => {
+  it("Footer component rendering and router for Home and Contact", () => {
     render(
       <BrowserRouter>
         <Footer />

@@ -20,7 +20,7 @@ export default function Form() {
      
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
       <Label>Nome</Label>
-      <Input
+      <Input data-testid= "form_firstName"
         {...register("firstName", {
           required: true,
           maxLength: 20,
@@ -35,7 +35,7 @@ export default function Form() {
 
 
       <Label>Sobrenome</Label>      
-      <Input {...register("lastName",{ 
+      <Input data-testid="form_lastName" {...register("lastName",{ 
         required: true,  
         pattern: /^[A-Za-z]+$/i })} />
 
@@ -44,7 +44,7 @@ export default function Form() {
 
 
       <Label>Idade</Label>
-      <Input {...register("age",{
+      <Input data-testid="form_age" {...register("age",{
          required: true , 
          min: 18, max: 99 })} />
 
